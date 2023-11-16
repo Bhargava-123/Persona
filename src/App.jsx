@@ -3,32 +3,18 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
+import Sidebar from './pages/Sidebar'
+import InputArea from './pages/InputArea'
 
 function App() {
 
-  const [profileLink, setProfileLink] = useState("")
   
-  var sendProfileLink = () => {
-  
-    axios.post("http://localhost:8080/home",{
-      "text" : profileLink
-    })
-      .then((response) => {
-      console.log(response.data)
-      })
-      .catch((error) => {
-      console.log(error)
-    })
-  
-  }
   
   return (
-    <>
-      <input type="text" className="profileLinkTextBox" id="" onChange={(e) => setProfileLink(e.target.value)} />
-      <h1>{profileLink}</h1>
-      <input type="button" value="Predict" onClick={sendProfileLink}/>
-      
-    </>
+    <div className='master-container'>
+      <Sidebar className = "sidebar-container"></Sidebar>
+      <InputArea className = "inputarea-container"></InputArea>
+    </div>
   )
 }
 

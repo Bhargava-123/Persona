@@ -1,0 +1,14 @@
+.sidebar-container{
+    background-color: rgb(211, 210, 210);
+    border-radius: 5px;
+    height: 98vh;
+    width: 300px;
+}
+.new-prediction-button{
+    background-color: aliceblue;
+    border-radius: 5px;
+    font-size: large;
+    outline: none;
+    border: none;
+    
+}

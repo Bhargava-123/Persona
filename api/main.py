@@ -4,6 +4,7 @@ import pickle
 from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 # Initializing the fast API server
 app = FastAPI()
@@ -25,10 +26,18 @@ app.add_middleware(
 class Item(BaseModel):
     text : str
 
+
 @app.post("/home")
 def get_home(item: Item):
     item.text = item.text + 'I added this in backend'
     return item
 
+@app.get("/get-recents")
+def get_recents():
+    list_of_files = os.listdir("./scrapped_pages")
+    print(list_of_files)
+    return {"data" : list_of_files}
+
+    return file
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='localhost')
