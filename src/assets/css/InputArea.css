@@ -1,0 +1,38 @@
+.inputarea-container{
+    display: flex;
+    height: 40px;
+    flex-direction: row;
+    gap: 5px;
+    width: 162.5vh;    
+}
+.profileLinkTextBox{
+    padding-left: 10px;
+    border: none;
+    border: solid 2px #303030;
+    border-radius: 18px;
+    flex-grow:  95;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: rgb(201, 201, 201);
+    
+}
+.profileLinkTextBox::placeholder {
+    color: rgba(0, 0, 0, 0.438);
+
+}
+.predictButton{
+    border-radius: 10px;
+    font-weight: 900;
+    flex-grow: 5;
+    
+    
+}
+.predictButton:active{
+    background-color: rgb(62, 62, 62);
+    color: white
+}
+
+.arrow-logo{
+    height: 40px;
+    width: 40px;
+}

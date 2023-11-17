@@ -1,0 +1,16 @@
+.dashboard-container{
+    background-color:rgb(201, 201, 201) ;
+    border-radius: 20px;
+    width: 160vh;
+    height: 88vh;
+    padding: 10px
+}
+.dashboard-contents-container{
+    width: 160vh;
+    height: 88vh;
+    border-radius: 20px;
+}
+.dashboard-heading{
+    margin-top: 5px;
+    margin-left: 10px;
+}

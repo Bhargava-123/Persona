@@ -1,8 +1,13 @@
 body{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Albert Sans', sans-serif;
 }
 .master-container{
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+.mainpage-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
 }

@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
+from predict import tellmemyMBTI
 
 # Initializing the fast API server
 app = FastAPI()
@@ -26,18 +27,39 @@ app.add_middleware(
 class Item(BaseModel):
     text : str
 
-
-@app.post("/home")
+#I dont think anyone would be able to live 300 years i am not talking about the physical 
+@app.post("/get-persona-analytics")
 def get_home(item: Item):
-    item.text = item.text + 'I added this in backend'
+    #if username doesnt exist already
+    #open a text file
+    if os.path.exists(f'./scrapped_pages/{item.text}.txt'):
+        prediction_values = tellmemyMBTI([item.text])
+        ele = prediction_values
+        # print(ele[0].tolist())
+        # print(ele[1].tolist())
+        # print(ele[2])
+
+        return {
+            "data" : prediction_values
+        }
+    else:
+        print("Does not exists")
+        open(f'./scrapped_pages/{item.text}.txt','w')
+        #get text data by scraping
+    
+
+    #do perdiction
+
+    #send results in return for showing graphs
     return item
 
 @app.get("/get-recents")
 def get_recents():
     list_of_files = os.listdir("./scrapped_pages")
-    print(list_of_files)
     return {"data" : list_of_files}
 
     return file
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='localhost')
+
+# uvicorn main:app --reload --reload-include *.py
