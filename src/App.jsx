@@ -13,15 +13,30 @@ function App() {
   const [inputLink, setInputLink] = useState("")
   const [analytics, setAnalytics] = useState([])
 
+  const [filesList, setFilesList] = useState([]);
+
+  useEffect(() => {
+    //get lists of texts available
+    axios.get("http://127.0.0.1:8000/get-recents")
+      .then((res) => {
+        setFilesList(res.data.data);
+        setFileName(res.data.data[0]);
+      })
+      .catch((err) => console.log(err))
+    }, [1])
+
   return (
     <div className='master-container'>
 
       <Sidebar className="sidebar-container" fileName={fileName} setFileName={setFileName}
-      inputLink={inputLink} setInputLink={setInputLink}></Sidebar>
+        inputLink={inputLink} setInputLink={setInputLink}
+
+      filesList={filesList} setFileList = {setFilesList}></Sidebar>
       <div className='mainpage-container'>
         <Dashboard
           analytics={analytics} setAnalytics={setAnalytics}
-          fileName={fileName} setFileName={setFileName} inputLink={inputLink} setInputLink={setInputLink}></Dashboard>
+          fileName={fileName} setFileName={setFileName} inputLink={inputLink} setInputLink={setInputLink}
+  ></Dashboard>
         <InputArea analytics={analytics} setAnalytics={setAnalytics} className="inputarea-container" inputLink={inputLink} setInputLink = {setInputLink} ></InputArea>
       </div>
       

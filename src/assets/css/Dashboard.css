@@ -2,7 +2,7 @@
     background-color:rgb(201, 201, 201) ;
     border-radius: 20px;
     width: 160vh;
-    height: 88vh;
+    height: 90vh;
     padding: 10px
 }
 .dashboard-contents-container{
@@ -13,4 +13,21 @@
 .dashboard-heading{
     margin-top: 5px;
     margin-left: 10px;
+}
+.chart{
+    height: 180px;
+    width: 180px;
+}
+.personality-charts{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    justify-content: center;
+}
+.personality-charts-container{
+    text-align: center;
+}
+.percentage-label{
+    margin-top: 10px;
+    font-weight: 900;
 }

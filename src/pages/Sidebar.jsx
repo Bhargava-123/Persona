@@ -10,17 +10,7 @@ import Dashboard from './Dashboard';
 const Sidebar = (props) => {
 
 
-    const [filesList, setFilesList] = useState([])
     
-
-    useEffect(() => {
-
-        axios.get("http://127.0.0.1:8000/get-recents").then((res) => {
-            setFilesList(res.data.data)
-        }).catch((err) => console.log(err) )
-
-    }, [1])
-
 
     return (
         <div className='sidebar-container'>
@@ -45,12 +35,12 @@ const Sidebar = (props) => {
                 <hr className='horizontal-line'/>
                 <div className='recent-predictions-list'>
                     {
-                        filesList.map((fileName) => (
+                        props.filesList.map((fileName) => (
                             <div className='recent-prediction-container'
                                 onClick={() => {
-                                    console.log(typeof (props.setFileName))
-                                    props.setFileName(fileName)
-                                } }
+                                    //fetch file details and predict analytics
+                                    props.setFileName(fileName);
+                                }}
                             >
                                 <img src={person} height={40} width={40} alt="" />
                                 <div style={{cursor: 'pointer'}}>{fileName}</div>
@@ -59,8 +49,6 @@ const Sidebar = (props) => {
                     }
                 </div>
             </div>
-            
-
         </div>
     )
    

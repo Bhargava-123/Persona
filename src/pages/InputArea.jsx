@@ -7,9 +7,6 @@ import axios from 'axios'
 const InputArea = (props) => {
     const HOST = "http://127.0.0.1:8000"
     // const [profileLink, setProfileLink] = useState("")
-
-    
-
     var sendProfileLink = () => {
         axios.post(`${HOST}/get-persona-analytics`, {
             "text": props.inputLink

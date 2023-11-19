@@ -58,8 +58,31 @@ def get_recents():
     list_of_files = os.listdir("./scrapped_pages")
     return {"data" : list_of_files}
 
-    return file
+class fileNameModel(BaseModel):
+    fileName : str 
+
+@app.post("/get-analytics")
+def get_analytics(fileNameModel : fileNameModel):
+    with open(f"./scrapped_pages/{fileNameModel.fileName}",'r') as file:
+        text = file.read()
+        prediction_values = tellmemyMBTI(text)
+        intj = prediction_values[0].tolist()
+        esfp = prediction_values[1].tolist()
+        type = prediction_values[2]
+        print(prediction_values)
+
+        return{
+            "ie" : [intj[0],esfp[0]],
+            "ns" : [intj[1],esfp[1]],
+            "tf" : [intj[2],esfp[2]],
+            "jp" : [intj[3],esfp[3]],
+            "intj" : intj,
+            "esfp" : esfp,
+            "type" : type
+        }
+        
+        
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='localhost')
 
-# uvicorn main:app --reload --reload-include *.py
+# uvicorn main:app --reload --reload-include predict.py
